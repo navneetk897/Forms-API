@@ -1,0 +1,15 @@
+.login-container {
+    height: calc(100vh - 60px);
+    display: grid;
+    place-items: center;
+
+
+    .login-btn {
+        color: white;
+        height: 30px;
+        width: 80px;
+        border: 0;
+        background: black;
+        cursor: pointer;
+    }
+}

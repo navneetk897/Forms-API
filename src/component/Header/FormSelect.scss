@@ -1,0 +1,59 @@
+.project-select {
+    height: 80%;
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+
+    .project-input {
+        outline: none;
+        border: 0;
+        font-size: 1.2rem;
+        height: 100%;
+        width: 210px;
+        flex-shrink: 0;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
+
+    .arrow-container {
+        display: grid;
+        place-items: center;
+        height: 100%;
+        flex-basis: 100%;
+        border-left: 1px solid black;
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border: 0 solid transparent;
+            border-width: 8px 0 8px 8px;
+            border-left-color: black;
+            transition-duration: 0.2s;
+        }
+    }
+}
+
+.form-list {
+    position: absolute;
+    height: 150px;
+    width: 220px;
+    // background: skyblue;
+    top: 53px;
+    overflow-y: auto;
+    border-radius: 10px;
+    border: 1px solid black;
+
+    .item {
+        font-size: 1.2rem;
+        height: 30px;
+        
+        p {
+            margin-left: 10px;
+        }
+    }
+    .item:hover {
+        background: #d3d3d3;
+    }
+}

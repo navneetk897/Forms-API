@@ -1,0 +1,26 @@
+.header {
+    height: 60px;
+
+
+    .header-container {
+        margin-left: 20px;
+        display: flex;
+        height: 100%;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .header-title {
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+
+    .itwin-logo {
+        height: 40px;
+        aspect-ratio: 1;
+    }
+
+
+    
+}
