@@ -32,6 +32,7 @@
     "@itwin/tree-widget-react": "^1.2.1",
     "@itwin/web-viewer-react": "^4.2.2",
     "@itwin/webgl-compatibility": "^4.3.2",
+    "@reduxjs/toolkit": "^2.0.1",
     "@remix-run/router": "^1.14.0",
     "@types/history": "^4.7.11",
     "@types/node": "^18.19.3",

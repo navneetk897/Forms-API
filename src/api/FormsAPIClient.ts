@@ -1,5 +1,4 @@
 import { BrowserAuthorizationClient } from "@itwin/browser-authorization";
-import { METHODS } from "http";
 
 const BASEURI = 'https://api.bentley.com/';
 
@@ -97,14 +96,14 @@ export default class FormsAPIClient {
         }
     }
     public async getProjectFormData(type: string) {
-        const url = `${BASEURI}forms/?projectId=${this.iTwinId}f&type=${type}`;
+        const url = `${BASEURI}forms/?projectId=${this.iTwinId}&type=${type}`;
         try {
             const result = await fetch(url, {
                 method: 'GET',
                 headers: {
                     Accept: 'application/vnd.bentley.itwin-platform.v1+json',
                     Authorization: await this.authClient.getAccessToken(),
-                    Prefer: 'return=minimal'
+                    Prefer: 'return=representation'
                 }
             }).then(response => response.json());
             return result;

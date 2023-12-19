@@ -3,7 +3,6 @@ import React from 'react';
 
 
 import "./Login.scss";
-import Header from '../Header/Header';
 
 interface LoginProps {
     authClient: BrowserAuthorizationClient
