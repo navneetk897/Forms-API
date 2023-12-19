@@ -2,7 +2,6 @@ import React, { useState } from "react"
 
 
 import "./FormSelect.scss";
-import ReactDOM from "react-dom";
 
 
 
