@@ -11,6 +11,14 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { Auth } from "./Auth";
 import * as serviceWorker from "./serviceWorker";
+import FormsAPIClient from "./api/FormsAPIClient";
+import { Provider } from 'react-redux';
+import { store } from "./store";
+
+
+
+
+
 
 if (!process.env.IMJS_AUTH_CLIENT_CLIENT_ID) {
   throw new Error(
@@ -28,6 +36,16 @@ if (!process.env.IMJS_AUTH_CLIENT_REDIRECT_URI) {
   );
 }
 
+if (!process.env.IMJS_ITWIN_ID) {
+  throw new Error('Add iTwinid in .env file');
+}
+
+
+
+
+
+const iTwinId: string = process.env.IMJS_ITWIN_ID;
+
 Auth.initialize({
   scope: process.env.IMJS_AUTH_CLIENT_SCOPES,
   clientId: process.env.IMJS_AUTH_CLIENT_CLIENT_ID,
@@ -37,13 +55,24 @@ Auth.initialize({
   authority: process.env.IMJS_AUTH_AUTHORITY,
 });
 
+
+
+
+export const formApiClient: FormsAPIClient = new FormsAPIClient(Auth.getClient(), iTwinId);
+
+
+
+
+
 const redirectUrl = new URL(process.env.IMJS_AUTH_CLIENT_REDIRECT_URI);
 if (redirectUrl.pathname === window.location.pathname) {
   Auth.handleSigninCallback().catch(console.error);
 } else {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>,
     document.getElementById("root")
   );
