@@ -10,6 +10,8 @@ interface FormDataInstaceInspection {
     description: string;
     createdBy: string;
     createdDateTime: Date;
+    number: number;
+    status: string;
     assignee: {
         id: string;
         displayName: string;
@@ -31,6 +33,8 @@ interface FormDataInstanceDailyLog {
     displayName: string;
     createdBy: string;
     createdDateTime: Date;
+    number: number;
+    status: string;
     assignee: {
         id: string;
         displayName: string;
@@ -90,6 +94,7 @@ const formDataSlice = createSlice({
             state.error = action.error.message ?? 'Request rejected';
         })
         .addCase(fetchFormDataInstance.fulfilled, (state, action) => {
+            state.loading = 'fullfilled';
             const value = action.payload;
             state.formDataInstanceDailyLogs = [];
             state.formDataInstanceInspections = [];
@@ -104,6 +109,8 @@ const formDataSlice = createSlice({
                             displayName: result.displayName,
                             createdBy: result.createdBy,
                             createdDateTime: result.createdDateTime,
+                            number: result.number,
+                            status: result.status,
                             assignee: {
                                 id: result.assignee.id,
                                 displayName: result.assignee.displayName
@@ -133,6 +140,8 @@ const formDataSlice = createSlice({
                             displayName: result.displayName,
                             createdBy: result.createdBy,
                             createdDateTime: result.createdDateTime,
+                            number: result.number,
+                            status: result.status,
                             assignee: {
                                 id: result.assignee.id,
                                 displayName: result.assignee.displayName
@@ -153,5 +162,6 @@ const formDataSlice = createSlice({
         })
     }
 })
+
 
 export default formDataSlice.reducer;

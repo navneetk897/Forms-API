@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react"
 
 
 import "./FormSelect.scss";
-import { FormDefnition, fetchFormDefinition } from "../../store/slices/formDefinitionSlice";
+import { FormDefnition, fetchFormDefinition, selectFormDef } from "../../store/slices/formDefinitionSlice";
 import { useAppSelector } from "../../store/hooks";
 import { useDispatch } from "react-redux";
-import { selectFormDefiniton } from "../../store/slices/selectedFormSlice";
 
 
 
@@ -39,13 +38,13 @@ const Model: React.FC<ModelProps> = ({ selectForm, forms, formInput}: ModelProps
     }
     return (
         <div id="form-def" className="form-list">
-            {orderedForm.map((form) => {
+            {orderedForm.length > 0 ? orderedForm.map((form) => {
                 return (
                     <div key={form.id} className="item" onClick={() => {
                         selectForm(form);
-                    }}>{form.displayName}</div>
+                    }}><p>{form.displayName}</p></div>
                 )
-            })}
+            }) : <div className="item"><p>No form available</p></div>}
         </div>
     )
 }
@@ -65,14 +64,16 @@ const FormSelect: React.FC = () => {
     
     useEffect(() => {
         if (forms.formDefinitions.length > 0) {
-            setFormInput(forms.formDefinitions[0].displayName);
-            setSelectedForm(forms.formDefinitions[0]);
+            if (!selectedForm) {
+                setFormInput(forms.formDefinitions[0].displayName);
+                setSelectedForm(forms.formDefinitions[0]);
+            }
         }
-    }, [forms]);
+    }, [forms, selectedForm]);
 
     useEffect(() => {
         if (selectedForm) {
-            dispatch(selectFormDefiniton(selectedForm));
+            dispatch(selectFormDef(selectedForm));
         }
     }, [dispatch, selectedForm]);
 
@@ -87,6 +88,8 @@ const FormSelect: React.FC = () => {
     }
 
     const formSelectClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        const model = document.getElementById('form-def');
+        if (model && model.contains(event.target as Node)) return;
         setShowModel(true);
         event.stopPropagation();
     }
@@ -94,8 +97,7 @@ const FormSelect: React.FC = () => {
     document.addEventListener('click', (event: MouseEvent) => {
         const model = document.getElementById('form-def');
         if (model) {
-            const isModel: boolean = model.contains(event.target as HTMLElement);
-            if (!isModel && showModel) {
+            if (showModel) {
                 setShowModel(false);
             }
         }

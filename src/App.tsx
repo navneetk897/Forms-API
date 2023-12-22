@@ -7,6 +7,7 @@ import { BrowserAuthorizationClient } from "@itwin/browser-authorization";
 import Login from "./component/Login/Login";
 import Header from "./component/Header/Header";
 import Spinner from "./component/Spinner";
+import Main from "./component/Main/Main";
 
 
 
@@ -55,13 +56,12 @@ const App: React.FC = () => {
   //     }
   //   })();
   // }, [login]);
- 
   return (
     <Container>
       <Header showFormList={login} authClient={authClient}/>
       {loading ? <div style={{height: 'calc(100vh - 60px)'}}><Spinner /></div> : 
       !login ? <Login authClient={authClient}/> : 
-      <div>LoggedIn</div>}
+      <Main />}
     </Container>
   );
 };
