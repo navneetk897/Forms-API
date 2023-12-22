@@ -37,13 +37,14 @@
 
 .form-list {
     position: absolute;
-    height: 150px;
     width: 220px;
-    // background: skyblue;
+    background: white;
     top: 53px;
     overflow-y: auto;
     border-radius: 10px;
     border: 1px solid black;
+    cursor: pointer;
+    z-index: 2;
 
     .item {
         font-size: 1.2rem;

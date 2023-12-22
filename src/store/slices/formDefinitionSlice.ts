@@ -24,8 +24,12 @@ const initialState: FormDefinitionState = {
 }
 
 export const fetchFormDefinition = createAsyncThunk('form/definition', async (data, thunkAPI) => {
-    const result = await formApiClient.getFormsDefinitions();
-    return result;
+    try {
+        const result = await formApiClient.getFormsDefinitions();
+        return result;
+    } catch(error) {
+        console.log(error);
+    }
 })
 
 
@@ -33,7 +37,9 @@ const formDefinitionsSlice = createSlice({
     name: 'formDefinition',
     initialState,
     reducers: {
-        
+        selectFormDef(state, action) {
+            state.selectedFormDefinition = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchFormDefinition.pending, (state) => {
@@ -52,6 +58,8 @@ const formDefinitionsSlice = createSlice({
     }
 });
 
+
+export const { selectFormDef } = formDefinitionsSlice.actions;
 
 
 export default formDefinitionsSlice.reducer;

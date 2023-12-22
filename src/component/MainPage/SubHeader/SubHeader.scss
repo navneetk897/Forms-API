@@ -1,0 +1,30 @@
+.sub-header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .create-btn {
+        height: 30px;
+        width: 100px;
+        color: white;
+        border: 0;
+        background: black;
+        margin-left: 20px;
+        cursor: pointer;
+    }
+    .delete-btn {
+        height: 30px;
+        width: 100px;
+        color: white;
+        border: 0;
+        background: grey;
+    }
+    [data-hover="inactive"]:hover {
+        cursor: not-allowed;
+    }
+    [data-hover="active"] {
+        cursor: pointer;
+        background: black;
+    }
+}
