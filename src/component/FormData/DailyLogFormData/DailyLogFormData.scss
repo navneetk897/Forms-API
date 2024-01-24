@@ -1,0 +1,28 @@
+.dailyLogForm-data {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+
+    .text-area {
+        height: 150px;
+    }
+
+    .file-attachment {
+        .file-upload {
+            height: 40px;
+            border: 0;
+            color: white;
+            background: black;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+        }
+    }
+    [data-hover="inactive"] {
+        cursor: not-allowed;
+    }
+
+    [data-hover="active"] {
+        cursor: pointer;
+    }
+}

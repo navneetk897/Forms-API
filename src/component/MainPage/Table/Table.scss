@@ -55,5 +55,8 @@
         tbody tr:nth-child(even) {
             background: #d3d3d3;
         }
+        tbody .form-link {
+            text-decoration: none;
+        }
     }
 }

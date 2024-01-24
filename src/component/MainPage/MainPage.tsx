@@ -1,15 +1,23 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import SubHeader from "./SubHeader/SubHeader";
 import Table from "./Table/Table";
 
+interface MainPageProps {
+    toggleFilter: (filter: boolean) => void;
+}
 
-const MainPage: React.FC = () => {
+
+const MainPage: React.FC<MainPageProps> = ({ toggleFilter }) => {
     const [deleteIds, setDeleteIds] = useState<string[]>([]);
 
     const addDeleteIds = useCallback((ids: string[]) => {
         setDeleteIds(ids);
     }, [setDeleteIds]);
     
+    useEffect(() => {
+        toggleFilter(true);
+    }, [toggleFilter]);
+
     
     return (
         <div className="main-page">

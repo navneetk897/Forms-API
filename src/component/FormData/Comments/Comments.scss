@@ -1,0 +1,83 @@
+.comments-conatiner {
+    position: absolute;
+    background: white;
+    inset: 0 0 auto auto;
+    height: auto;
+    width: 350px;
+    height: calc(100vh - 134px);
+
+    .add-comment {
+        position: absolute;
+        bottom: 0;
+        height: 40px;
+        background: black;
+        color: white;
+        display: flex;
+        input {
+            width: 227.5px;
+            outline: none;
+            font-size: 1.2rem;
+        }
+        p {
+            padding: 10px 10px;
+            cursor: pointer;
+        }
+    }
+
+    .header {
+        height: 40px;
+        position: sticky;
+        top: 0;
+        background: white;
+    }
+
+    .comments-header {
+        margin: 0 20px 0 5px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+            font-size: 1.2rem;
+        }
+        span {
+            cursor: pointer;
+            font-weight: 700;
+        }
+    }
+    .comments {
+        overflow-y: auto;
+        height: calc(100vh - 134px - 40px - 40px);
+
+
+        .comment-box {
+            display: flex;
+            justify-content: space-between;
+    
+            .user-name {
+                margin: 15px 15px;
+                font-size: .9rem;
+                font-weight: 700;
+            }
+            .text {
+                margin: 15px 15px;
+            }
+    
+            .delete-icon {
+                margin: 15px 15px;
+                align-self: center;
+                .icon {
+                    height: 20px;
+                    aspect-ratio: 1;
+                    cursor: pointer;
+    
+                }
+            }
+        }
+        .comment-box:nth-child(2n) {
+            background: #d3d3d3;
+        }
+    }
+
+}

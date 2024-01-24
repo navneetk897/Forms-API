@@ -5,6 +5,7 @@ import { useAppSelector } from "../../../store/hooks";
 import Spinner from "../../Spinner";
 import { fetchFormDataInstance } from "../../../store/slices/formDataSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 interface TableProps {
     addDeleteIds: (ids: string[]) => void;
@@ -64,7 +65,7 @@ const Table: React.FC<TableProps> = ({ addDeleteIds }) => {
                                         setIds(newIds);
                                     }
                                 }}/>
-                                {form.number}
+                                <Link className="form-link" to={`/forms/${form.id}?type=${form.type}`}>{form.number}</Link>
                             </td>
                             <td>{form.displayName}</td>
                             <td>{form.state}</td>
