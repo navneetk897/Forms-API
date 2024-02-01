@@ -1,0 +1,41 @@
+.formData-container {
+
+
+    .buttons-container {
+        height: 70px;
+        margin-left: 20px;
+        display: flex;
+        gap: 15px;
+        align-items: center;
+
+        .state-select {
+            padding: 5px;
+            height: 30px;
+            width: 80px;
+            background: black;
+            color: white;
+        }
+        .btn {
+            padding: 5px 10px;
+            height: 30px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+    .form-container {
+        position: relative;
+
+        .form-overlay {
+            position: absolute;
+            height: calc(100vh - 134px);
+            width: 100%;
+            background: black;
+            top: 0;
+            left: 0;
+            opacity: 0.5;
+        }
+    }
+}

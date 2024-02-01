@@ -17,6 +17,7 @@ const App: React.FC = () => {
   
   const [login, setLogin] = useState<boolean>(false);
   const [loading, setLoading] = useState(true);
+  const [showFormFilter, setShowFormFilter] = useState<boolean>(false);
   const authClient: BrowserAuthorizationClient = Auth.getClient();
 
   const tryLogin = useCallback(async () => {
@@ -33,6 +34,10 @@ const App: React.FC = () => {
     void tryLogin();
   }, [tryLogin]);
 
+  useEffect(() => {
+    setShowFormFilter(login);
+  }, [login])
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,21 +52,15 @@ const App: React.FC = () => {
     }
   }, [authClient, authClient.isAuthorized]);
 
-  // API Testing useEffect
-
-  // useEffect(() => {
-  //   (async () => {
-  //     if (login) {
-  //       console.log(await formApiClient.getFormsDefinitions());
-  //     }
-  //   })();
-  // }, [login]);
+  const toggleFilter = (filter: boolean) => {
+    setShowFormFilter(filter);
+  }
   return (
     <Container>
-      <Header showFormList={login} authClient={authClient}/>
+      <Header showFormList={showFormFilter} authClient={authClient}/>
       {loading ? <div style={{height: 'calc(100vh - 60px)'}}><Spinner /></div> : 
       !login ? <Login authClient={authClient}/> : 
-      <Main />}
+      <Main toggleFilter={toggleFilter}/>}
     </Container>
   );
 };

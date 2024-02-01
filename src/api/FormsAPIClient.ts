@@ -23,7 +23,7 @@ export default class FormsAPIClient {
             }).then(response => response.json());
             return result;
         } catch(error) {
-
+            console.log(error);
         }
     }
 
@@ -51,7 +51,7 @@ export default class FormsAPIClient {
                 headers: {
                     Accept: 'application/vnd.bentley.itwin-platform.v1+json',
                     Authorization: await this.authClient.getAccessToken(),
-                    'Conten-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             }).then(response => response.json());
@@ -120,7 +120,7 @@ export default class FormsAPIClient {
                 headers: {
                     Accept: 'application/vnd.bentley.itwin-platform.v1+json',
                     Authorization: await this.authClient.getAccessToken(),
-                    'Conten-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
             }).then(response => response.json());
@@ -139,7 +139,7 @@ export default class FormsAPIClient {
                     Accept: 'application/vnd.bentley.itwin-platform.v1+json',
                     Authorization: await this.authClient.getAccessToken()
                 }
-            }).then(response => response.arrayBuffer());
+            }).then(response => response.blob());
             return result;
         } catch(error) {
             console.log(error);
@@ -211,10 +211,10 @@ export default class FormsAPIClient {
                     Authorization: await this.authClient.getAccessToken(),
                     Prefer: 'return=minimal'
                 }
-            }).then(response => response.json);
+            }).then(response => response.json());
             return result;
         } catch(error) {
-
+            console.log(error);
         }
     }
 
@@ -238,7 +238,7 @@ export default class FormsAPIClient {
     public async addAttachmentToForm(id: string, data: any) {
         const url = `${BASEURI}forms/${id}/attachments`;
         try {
-            const result = await fetch(url, {
+            const response = await fetch(url, {
                 method: 'POST',
                 headers: {
                     Accept: 'application/vnd.bentley.itwin-platform.v1+json',
@@ -246,8 +246,8 @@ export default class FormsAPIClient {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
-            }).then(response => response.json());
-            return result;
+            });
+            return response.ok;
         } catch(error) {
             console.log(error);
         }
@@ -271,7 +271,7 @@ export default class FormsAPIClient {
     }
 
     public async getAttachment(id: string, attachmentId: string) {
-        const url = `${BASEURI}forms/${id}/attachments/{$attachmentId}`;
+        const url = `${BASEURI}forms/${id}/attachments/${attachmentId}`;
         try {
             const result = await fetch(url, {
                 method: 'GET',
@@ -279,7 +279,7 @@ export default class FormsAPIClient {
                     Accept: 'application/vnd.bentley.itwin-platform.v1+json',
                     Authorization: await this.authClient.getAccessToken()
                 }
-            }).then(response => response.arrayBuffer());
+            }).then(response => response.blob());
             return result;
         } catch(error) {
             console.log(error);
@@ -298,11 +298,11 @@ export default class FormsAPIClient {
             }).then(response => response.json());
             return result;
         } catch(error) {
-
+            console.log(error);
         }
     }
 
-    public async uploadAttachmentToForm(id: string, attachmentId: string, data: any) {
+    public async uploadAttachmentToForm(id: string, attachmentId: string, file: File) {
         const url = `${BASEURI}forms/${id}/attachments/${attachmentId}`;
         try {
             const response = await fetch(url, {
@@ -311,11 +311,27 @@ export default class FormsAPIClient {
                     Accept: 'application/vnd.bentley.itwin-platform.v1+json',
                     Authorization: await this.authClient.getAccessToken()
                 },
-                body: JSON.stringify(data)
+                body: file
             });
             if (response.ok) return true;
             return false;
         } catch(error) {
+            console.log(error);
+        }
+    }
+
+    public async getProjectsUsers() {
+        const url = `${BASEURI}accesscontrol/itwins/${this.iTwinId}/members/users`;
+        try {
+            const result = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    Accept: 'application/vnd.bentley.itwin-platform.v2+json',
+                    Authorization: await this.authClient.getAccessToken()
+                }
+            }).then(res => res.json());
+            return result;
+        } catch (error) {
             console.log(error);
         }
     }

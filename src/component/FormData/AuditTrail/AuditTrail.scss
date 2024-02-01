@@ -1,0 +1,62 @@
+.audit-trail-conatiner {
+    position: absolute;
+    background: white;
+    inset: 0 0 auto auto;
+    height: auto;
+    width: 350px;
+    height: calc(100vh - 134px);
+
+    .header {
+        height: 40px;
+        position: sticky;
+        top: 0;
+        background: white;
+    }
+
+    .audit-trail-header {
+        margin: 0 20px 0 5px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+            font-size: 1.2rem;
+        }
+        span {
+            cursor: pointer;
+            font-weight: 700;
+        }
+    }
+
+    .audit-trails {
+        overflow-y: auto;
+        height: calc(100vh - 134px - 40px);
+
+
+        .audit-trail-box {
+
+            .audit-trail {
+                padding: 10px;
+                display: flex;
+                gap: 5px;
+                flex-direction: column;
+            }
+
+            .details {
+                display: flex;
+                gap: 5px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .audit-trail-box:nth-child(2n) {
+            background: #d3d3d3;
+        }
+    }
+
+    .audit-trail::-webkit-scrollbar {
+        width: 10px;
+    }
+
+}

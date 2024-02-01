@@ -1,0 +1,41 @@
+.inspectionForm-data {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+
+    .text-area {
+        height: 150px;
+    }
+}
+
+.title {
+    text-align: center;
+    border: 2px solid black;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+}
+
+.btns {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    .submit-btn {
+        height: 40px;
+        border: none;
+        color: white;
+        background: black;
+        width: 70px;
+        cursor: pointer;
+    }
+    [data-hover="inactive"] {
+        cursor: not-allowed;
+    }
+
+    [data-hover="active"] {
+        cursor: pointer;
+    }
+}

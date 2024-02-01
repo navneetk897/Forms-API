@@ -56,20 +56,28 @@ const FormSelect: React.FC = () => {
     const [formInput, setFormInput] = useState<string> ('');
     const [selectedForm, setSelectedForm] = useState<FormDefnition>();
     const forms = useAppSelector(state => state.formDefinition);
+    const selectedFormDef = useAppSelector(state => state.formDefinition.selectedFormDefinition);
     const dispatch = useDispatch<any>();
 
     useEffect(() => {
-        dispatch(fetchFormDefinition());
+        if (forms.formDefinitions.length === 0) {
+            dispatch(fetchFormDefinition());
+        }
     }, [dispatch]);
     
     useEffect(() => {
         if (forms.formDefinitions.length > 0) {
             if (!selectedForm) {
-                setFormInput(forms.formDefinitions[0].displayName);
-                setSelectedForm(forms.formDefinitions[0]);
+                if (!selectedFormDef) {
+                    setFormInput(forms.formDefinitions[0].displayName);
+                    setSelectedForm(forms.formDefinitions[0]);
+                } else {
+                    setFormInput(selectedFormDef.displayName);
+                    setSelectedForm(selectedFormDef);
+                }
             }
         }
-    }, [forms, selectedForm]);
+    }, [forms, selectedForm, selectedFormDef]);
 
     useEffect(() => {
         if (selectedForm) {

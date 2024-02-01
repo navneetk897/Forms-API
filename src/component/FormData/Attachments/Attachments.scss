@@ -1,0 +1,117 @@
+.attachment-conatiner {
+    position: absolute;
+    background: white;
+    inset: 0 0 auto auto;
+    height: auto;
+    width: 350px;
+    height: calc(100vh - 134px);
+
+
+    .header {
+        height: 40px;
+        position: sticky;
+        top: 0;
+        background: white;
+    }
+
+    .attachment-header {
+        margin: 0 20px 0 5px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        p {
+            font-size: 1.2rem;
+        }
+        span {
+            cursor: pointer;
+            font-weight: 700;
+        }
+    }
+
+    .attachments {
+        overflow-y: auto;
+        height: calc(100vh - 134px - 40px - 40px);
+
+        .attachment-box {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            height: 80px;
+
+            img {
+                height: 40px;
+                aspect-ratio: 1;
+            }
+
+            img:first-child {
+                margin-left: 10px;
+            }
+
+            .delete-icon {
+                margin: 0 20px 0 auto;
+                display: grid;
+                place-items: center;
+                cursor: pointer;
+
+                .icon {
+                    height: 20px;
+                    aspect-ratio: 1;
+                }
+            }
+
+
+            .attachment-data {
+                flex-basis: 200px;
+                flex-grow: 0;
+                cursor: pointer;
+
+                p:first-child {
+                    width: 200px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    text-wrap: nowrap;
+                }
+            }
+        }
+        .attachment-box:nth-child(2n) {
+            background: #d3d3d3;
+        }
+    }
+    .upload-attachment {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        gap: 5px;
+    }
+    .select-attachment {
+        position: relative;
+        flex-basis: 70%;
+        height: 40px;
+        background: black;
+        color: white;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+    }
+    .select-attachment::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border: 0 solid transparent;
+        border-width: 8px 8px 0 8px;
+        border-top-color: white;
+        position: absolute;
+        right: 10px;
+    }
+    .upload-btn {
+        flex: 30%;
+        border: none;
+        background: black;
+        color: white;
+        cursor: pointer;
+    }
+
+}

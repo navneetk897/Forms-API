@@ -1,0 +1,63 @@
+.dailyLogForm-model {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: white;
+    height: 650px;
+    width: 800px;
+    padding: 25px;
+    border-radius: 5px;
+    overflow-y: auto;
+
+    .title {
+        text-align: center;
+        border: 2px solid black;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 20px;
+    }
+
+    .grid-container {
+        .file-attachment {
+            .file-upload {
+                height: 40px;
+                border: 0;
+                color: white;
+                background: black;
+                cursor: pointer;
+                display: grid;
+                place-items: center;
+            }
+        }
+        .text-area textarea {
+            height: 160px;
+        }
+    }
+
+    .btns {
+        margin-top: 50px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .submit-btn {
+            height: 40px;
+            border: none;
+            color: white;
+            background: black;
+            width: 70px;
+            cursor: pointer;
+        }
+        .close-btn {
+            height: 40px;
+            width: 70px;
+            border: none;
+            color: white;
+            background: black;
+            cursor: pointer;
+        }
+    }
+}

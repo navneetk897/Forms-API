@@ -1,0 +1,194 @@
+.inspectionForm-model {
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background-color: white;
+    height: 650px;
+    width: 800px;
+    padding: 25px;
+    border-radius: 5px;
+    overflow-y: auto;
+
+    .title {
+        text-align: center;
+        border: 2px solid black;
+        height: 30px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 20px;
+    }
+
+    .btns {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+
+        .submit-btn {
+            height: 40px;
+            border: none;
+            color: white;
+            background: black;
+            width: 70px;
+            cursor: pointer;
+        }
+        .close-btn {
+            height: 40px;
+            width: 70px;
+            border: none;
+            color: white;
+            background: black;
+            cursor: pointer;
+        }
+    }
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 20px;
+
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 5px
+    }
+
+    .weather input {
+        border-radius: 5px;
+        font-size: 1.2rem;
+        height: 40px;
+        outline: none;
+        border: 1px solid black;
+        padding: 5px;
+    }
+
+    .name input {
+        border-radius: 5px;
+        font-size: 1.2rem;
+        height: 40px;
+        outline: none;
+        border: 1px solid black;
+        padding: 5px;
+    }
+    .name label::after {
+        content: '*';
+        color: red;
+        font-size: 1.5rem;
+        position: absolute;
+    }
+    .date input {
+        border-radius: 5px;
+        font-size: 1.2rem;
+        height: 40px;
+        outline: none;
+        border: 1px solid black;
+        padding: 5px;
+    }
+    .date label::after {
+        content: '*';
+        color: red;
+        font-size: 1.5rem;
+        position: absolute;
+    }
+    .workforce input {
+        border-radius: 5px;
+        font-size: 1.2rem;
+        height: 40px;
+        outline: none;
+        border: 1px solid black;
+        padding: 5px;
+    }
+    .workforce label::after {
+        content: '*';
+        color: red;
+        font-size: 1.5rem;
+        position: absolute;
+    }
+
+    .issue-concern {
+        grid-column: 1 / 3;
+    }
+
+    .milestone input {
+        border-radius: 5px;
+        font-size: 1.2rem;
+        height: 40px;
+        outline: none;
+        border: 1px solid black;
+        padding: 5px;
+    }
+    .milestone label::after {
+        content: '*';
+        color: red;
+        font-size: 1.5rem;
+        position: absolute;
+    }
+    .text-area {
+        grid-column: 1 / 3;
+        [data-type="description"]::after {
+            content: '*';
+            color: red;
+            font-size: 1.5rem;
+            position: absolute;
+        }
+
+        textarea {
+            resize: vertical;
+            border-radius: 5px;
+            height: 200px;
+            font-size: 1.2rem;
+            outline: none;
+            padding: 5px;
+            border: 1px solid black;
+        }
+    }
+
+    .signature {
+        flex-direction: row;
+        align-items: end;
+        gap: 0;
+        .sign {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        input {
+            border-radius: 5px 0 0 5px;
+            font-size: 1.2rem;
+            height: 40px;
+            outline: none;
+            border: 1px solid black;
+            padding: 5px;
+            background: #d3d3d3;
+            width: 310px;
+            cursor: default;
+            font-family: Dancing Script, cursive;
+        }
+        .edit-icon {
+            height: 40px;
+            width: 40px;
+            display: grid;
+            place-items: center;
+            background-color: #d3d3d3;
+            border: 1px solid black;
+            border-left: none;
+            border-radius: 0 5px 5px 0;
+
+
+            .icon {
+                height: 15px;
+                width: 15px;
+                background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHBhdGggZD0iTTE1LjYyIDE0LjUzaC0uMDdsLTQuMjguNTVhLjI2LjI2IDAgMDEtLjI1LS40IDIuODggMi44OCAwIDAwLjE4LS4zLjQxLjQxIDAgMDAtLjM3LS42MWgtLjA3bC01LjYuODMtLjY3LjEtMS44Mi4zYS4zOS4zOSAwIDAwLS4zNC40MS40Mi40MiAwIDAwLjEuMjUuMzUuMzUgMCAwMC4yOS4xMmguMDdsNi42OC0xYS4yNS4yNSAwIDAxLjI1LjRsLS4xMy4xOGEuNDUuNDUgMCAwMC4wNS41Ni4zOS4zOSAwIDAwLjI1LjEybDUuNzctLjczYS4zOS4zOSAwIDAwLjMtLjQ4LjM1LjM1IDAgMDAtLjM0LS4zek0xMy4xNSAzLjMxQTEuMyAxLjMgMCAwMDEzIDEuNDhMMTEuNTkuM2ExLjMzIDEuMzMgMCAwMC0xLjg0LjE1bC0uNTUuNjZMMTIuNiA0TTEyLjE2IDQuNDVsLTMuNC0yLjg0TDcuNiAzIDExIDUuODF6TTAgMTUuMTJhLjE3LjE3IDAgMDAuMjIuMThsLjg2LS4yMi0xLS44NXpNNC4xMSAxMy45MWw2LjQxLTcuNTJMNy4xIDMuNTQuNzEgMTEuMDdhLjg4Ljg4IDAgMDAtLjIuNWwtLjE2IDIuMDcgMS4yNyAxLjA2IDItLjUxYS45NC45NCAwIDAwLjQ5LS4yOHoiLz48L3N2Zz4=');
+            }
+        }
+    }
+
+
+
+}
